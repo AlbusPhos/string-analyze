@@ -14,16 +14,6 @@
 
 `string-analyze` 是一个面向杂乱文本的规则流扫描引擎，用于从日志、内存转储、反编译输出与 CTF 附件中快速定位 flag、API 密钥、哈希、PII 以及编码 / 文件特征。它将「基础提取 → 熵过滤 → 上下文断言 → 自定义校验」串成可组合的四阶段管道，并通过 `rayon` 并行执行全部规则。内置约 160 条规则，支持按模块与重要程度过滤，也可以使用 `lazy_rule!` 宏声明自定义规则。输出带 ANSI 高亮与 0–100 风险评分，既可作为库嵌入其他工具，也可作为 stdin 过滤器直接使用。
 
-## 目录
-
-- [快速开始](#快速开始-quick-start)
-- [API 预览](#api-预览-api-overview)
-- [适用场景](#适用场景-when-to-use)
-- [平台与环境支持](#平台与环境支持-platform-support)
-- [安全性](#安全性-security)
-- [贡献](#贡献-contributing)
-- [变更日志](#变更日志-changelog)
-- [开源协议](#开源协议-license)
 
 ## 快速开始 (Quick Start)
 
@@ -39,7 +29,7 @@ cargo add string-analyze
 
 ```toml
 [dependencies]
-string-analyze = "0.1.0"
+string-analyze = "0.1"
 ```
 
 基本用法：
