@@ -3,6 +3,7 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 #![doc = include_str!("../README.md")]
+#![forbid(unsafe_code)]
 
 pub mod entropy;
 pub mod rules;
