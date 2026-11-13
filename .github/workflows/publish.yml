@@ -44,24 +44,11 @@ jobs:
       - uses: actions/checkout@v7
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
-      - name: Check whether this version is already published
-        id: published
-        run: |
-          VER=$(sed -n 's/^version *= *"\([^"]*\)".*/\1/p' Cargo.toml | head -1)
-          if curl -fsS "https://crates.io/api/v1/crates/string-analyze/${VER}" > /dev/null; then
-            echo "exists=true" >> "$GITHUB_OUTPUT"
-            echo "::notice::string-analyze ${VER} already exists on crates.io, skipping publish."
-          else
-            echo "exists=false" >> "$GITHUB_OUTPUT"
-          fi
       - uses: rust-lang/crates-io-auth-action@v1
         id: auth
-        if: steps.published.outputs.exists != 'true'
       - name: Dry run
-        if: steps.published.outputs.exists != 'true'
         run: cargo publish --locked --dry-run
       - name: Publish
-        if: steps.published.outputs.exists != 'true'
         run: cargo publish --locked
         env:
           CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}
