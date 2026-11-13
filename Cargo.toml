@@ -1,0 +1,27 @@
+[package]
+name = "string-analyze"
+version = "0.1.0"
+edition = "2024"
+license = "MPL-2.0"
+description = "Find key strings from cluttered text"
+readme = "README.md"
+repository = "https://github.com/AlbusPhos/string-analyze"
+documentation = "https://docs.rs/string-analyze"
+keywords = ["ctf", "security", "secret-scanning", "entropy", "string-analysis"]
+categories = ["command-line-utilities", "text-processing"]
+authors = ["AlbusPhos"]
+rust-version = "1.92"
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[dependencies]
+regex = "1"
+rayon = "1.12.0"
+inventory = "0.3"
+lib-unknown = { version = "0.4.1", default-features = false, features = ["encoding-base64", "encoding-hex", "alloc"] }
+
+[dev-dependencies]
+rand = "0.10.2"
+
